@@ -442,7 +442,7 @@ class MainWindowController: NSWindowController, NSWindowDelegate {
   @IBOutlet weak var oscTopMainView: NSStackView!
 
   @IBOutlet var fragControlView: NSStackView!
-  @IBOutlet var fragToolbarView: NSView!
+  @IBOutlet var fragToolbarView: NSStackView!
   @IBOutlet var fragVolumeView: NSView!
   @IBOutlet var fragSliderView: NSView!
   @IBOutlet var fragControlViewMiddleView: NSView!
@@ -545,6 +545,7 @@ class MainWindowController: NSWindowController, NSWindowDelegate {
     fragControlView.addView(fragControlViewMiddleView, in: .center)
     fragControlView.addView(fragControlViewRightView, in: .center)
     setupOnScreenController(position: oscPosition)
+    setupOSCToolbarButtons()
 
     updateArrowButtonImage()
 
@@ -653,6 +654,19 @@ class MainWindowController: NSWindowController, NSWindowDelegate {
     notificationObservers[center]!.append(observer)
   }
 
+  private func setupOSCToolbarButtons() {
+    let buttons: [Preference.ToolBarButton] = [.fullScreen, .pip, .playlist, .settings]
+    for buttonType in buttons {
+      let button = NSButton()
+      button.bezelStyle = .regularSquare
+      button.isBordered = false
+      button.image = buttonType.image()
+      let buttonWidth = buttons.count == 5 ? "20" : "24"
+      Utility.quickConstraints(["H:[btn(\(buttonWidth))]", "V:[btn(24)]"], ["btn": button])
+      fragToolbarView.addView(button, in: .trailing)
+    }
+  }
+
   private func setupOnScreenController(position newPosition: Preference.OSCPosition) {
 
     var isCurrentControlBarHidden = false
@@ -703,8 +717,8 @@ class MainWindowController: NSWindowController, NSWindowDelegate {
     switch oscPosition {
     case .floating:
       currentControlBar = controlBarFloating
-      fragControlView.setVisibilityPriority(.mustHold, for: fragControlViewLeftView)
-      fragControlView.setVisibilityPriority(.mustHold, for: fragControlViewRightView)
+      fragControlView.setVisibilityPriority(.detachOnlyIfNecessary, for: fragControlViewLeftView)
+      fragControlView.setVisibilityPriority(.detachOnlyIfNecessary, for: fragControlViewRightView)
       oscFloatingTopView.addView(fragVolumeView, in: .leading)
       oscFloatingTopView.addView(fragToolbarView, in: .trailing)
       oscFloatingTopView.addView(fragControlView, in: .center)
@@ -729,6 +743,7 @@ class MainWindowController: NSWindowController, NSWindowDelegate {
       oscTopMainView.addView(fragSliderView, in: .leading)
       oscTopMainView.setClippingResistancePriority(.defaultLow, for: .horizontal)
       oscTopMainView.setVisibilityPriority(.detachOnlyIfNecessary, for: fragVolumeView)
+      oscTopMainView.setVisibilityPriority(.detachOnlyIfNecessary, for: fragToolbarView)
     case .bottom:
       currentControlBar = controlBarBottom
       fragControlView.setVisibilityPriority(.notVisible, for: fragControlViewLeftView)
@@ -739,6 +754,7 @@ class MainWindowController: NSWindowController, NSWindowDelegate {
       oscBottomMainView.addView(fragSliderView, in: .leading)
       oscBottomMainView.setClippingResistancePriority(.defaultLow, for: .horizontal)
       oscBottomMainView.setVisibilityPriority(.detachOnlyIfNecessary, for: fragVolumeView)
+      oscBottomMainView.setVisibilityPriority(.detachOnlyIfNecessary, for: fragToolbarView)
     }
 
     if currentControlBar != nil {
@@ -1495,6 +1511,7 @@ class MainWindowController: NSWindowController, NSWindowDelegate {
   }
 
   private func hideUI() {
+    return
     // Don't hide UI when in PIP
     guard pipStatus == .notInPIP || animationState == .hidden else {
       return
