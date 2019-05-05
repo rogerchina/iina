@@ -2040,7 +2040,7 @@
 					};
 					84EB1ED51D2F51D3004FA5A1 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = 67CQ77V27R;
+						DevelopmentTeam = 97GEKX6SFC;
 						LastSwiftMigration = 1000;
 					};
 					E3DE8DC91FD8166A0021921C = {
@@ -2056,6 +2056,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				Base,
 				en,
 				"zh-Hans",
@@ -3360,7 +3361,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 67CQ77V27R;
+				DEVELOPMENT_TEAM = 97GEKX6SFC;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
@@ -3398,7 +3399,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 67CQ77V27R;
+				DEVELOPMENT_TEAM = 97GEKX6SFC;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
