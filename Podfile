@@ -5,10 +5,12 @@ target 'iina' do
   use_frameworks!
 
   # Pods for iina
-  pod 'Just', :git => 'https://github.com/JustHTTP/Just.git'
+  #pod 'Just', :git => 'https://github.com/JustHTTP/Just.git'
+  pod 'Just', :git => 'https://github.com/rogerchina/Just.git'
   pod 'PromiseKit'
   pod 'GzipSwift'
-  pod 'GRMustache.swift', :git => 'https://github.com/iina/GRMustache.swift.git'
+  #pod 'GRMustache.swift', :git => 'https://github.com/iina/GRMustache.swift.git'
+  pod 'GRMustache.swift', :git => 'https://github.com/rogerchina/GRMustache.swift.git'
   pod 'Sparkle'
 
 #  target 'iinaTests' do
