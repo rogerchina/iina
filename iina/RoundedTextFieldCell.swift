@@ -10,19 +10,19 @@ import Cocoa
 
 class RoundedTextFieldCell: NSTextFieldCell {
 
-  let paddingH: CGFloat = 4
-  let paddingV: CGFloat = 2
+    let paddingH: CGFloat = 4
+    let paddingV: CGFloat = 2
 
-  override func awakeFromNib() {
-    bezelStyle = .roundedBezel
-  }
+    override func awakeFromNib() {
+        bezelStyle = .roundedBezel
+    }
 
-  override func draw(withFrame cellFrame: NSRect, in controlView: NSView) {
-    super.draw(withFrame: cellFrame, in: controlView)
-  }
+    override func draw(withFrame cellFrame: NSRect, in controlView: NSView) {
+        super.draw(withFrame: cellFrame, in: controlView)
+    }
 
-  override func drawingRect(forBounds rect: NSRect) -> NSRect {
-    return rect.insetBy(dx: paddingH, dy: paddingV)
-  }
+    override func drawingRect(forBounds rect: NSRect) -> NSRect {
+        return rect.insetBy(dx: paddingH, dy: paddingV)
+    }
 
 }

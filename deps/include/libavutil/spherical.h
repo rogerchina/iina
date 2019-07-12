@@ -53,7 +53,7 @@ enum AVSphericalProjection {
      * Video represents a sphere mapped on a flat surface using
      * equirectangular projection.
      */
-    AV_SPHERICAL_EQUIRECTANGULAR,
+            AV_SPHERICAL_EQUIRECTANGULAR,
 
     /**
      * Video frame is split into 6 faces of a cube, and arranged on a
@@ -62,14 +62,14 @@ enum AVSphericalProjection {
      * forwards and the down face is oriented so the top of the face is
      * to the back.
      */
-    AV_SPHERICAL_CUBEMAP,
+            AV_SPHERICAL_CUBEMAP,
 
     /**
      * Video represents a portion of a sphere mapped on a flat surface
      * using equirectangular projection. The @ref bounding fields indicate
      * the position of the current video in a larger surface.
      */
-    AV_SPHERICAL_EQUIRECTANGULAR_TILE,
+            AV_SPHERICAL_EQUIRECTANGULAR_TILE,
 };
 
 /**
@@ -203,9 +203,9 @@ AVSphericalMapping *av_spherical_alloc(size_t *size);
  * @param bottom Pixels from the bottom edge.
  */
 void av_spherical_tile_bounds(const AVSphericalMapping *map,
-                              size_t width, size_t height,
-                              size_t *left, size_t *top,
-                              size_t *right, size_t *bottom);
+        size_t width, size_t height,
+        size_t *left, size_t *top,
+        size_t *right, size_t *bottom);
 
 /**
  * Provide a human-readable name of a given AVSphericalProjection.

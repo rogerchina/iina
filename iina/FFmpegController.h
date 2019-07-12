@@ -9,9 +9,9 @@
 #import <Foundation/Foundation.h>
 
 
-@interface FFThumbnail: NSObject
+@interface FFThumbnail : NSObject
 
-@property(nonatomic) NSImage * _Nullable image;
+@property(nonatomic) NSImage *_Nullable image;
 @property(nonatomic) double realTime;
 
 @end
@@ -22,19 +22,37 @@
 /**
  A notification being sent
  */
-- (void)didUpdateThumbnails:(nullable NSArray<FFThumbnail *> *)thumbnails forFile:(nonnull NSString *)filename withProgress:(NSInteger)progress;
+- (void)didUpdateThumbnails:(
+
+nullable NSArray<FFThumbnail *> *)
+thumbnails forFile
+:(
+nonnull NSString
+*)
+filename withProgress
+:(NSInteger)
+progress;
 
 /** 
  Did generated thumbnails for the video.
  */
-- (void)didGenerateThumbnails:(nonnull NSArray<FFThumbnail *> *)thumbnails forFile:(nonnull NSString *)filename succeeded:(BOOL)succeeded;
+- (void)didGenerateThumbnails:(
+
+nonnull NSArray<FFThumbnail *> *)
+thumbnails forFile
+:(
+nonnull NSString
+*)
+filename succeeded
+:(BOOL)
+succeeded;
 
 @end
 
 
-@interface FFmpegController: NSObject
+@interface FFmpegController : NSObject
 
-@property(nonatomic, weak) id<FFmpegControllerDelegate> _Nullable delegate;
+@property(nonatomic, weak) id <FFmpegControllerDelegate> _Nullable delegate;
 
 @property(nonatomic) NSInteger thumbnailCount;
 

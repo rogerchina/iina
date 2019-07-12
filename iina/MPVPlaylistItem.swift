@@ -10,25 +10,25 @@ import Cocoa
 
 class MPVPlaylistItem: NSObject {
 
-  /** Actually this is the path. Use `filename` to conform mpv API's naming. */
-  var filename: String
+    /** Actually this is the path. Use `filename` to conform mpv API's naming. */
+    var filename: String
 
-  /** Title or the real filename */
-  var filenameForDisplay: String {
-    return title ?? (isNetworkResource ? filename : NSString(string: filename).lastPathComponent)
-  }
+    /** Title or the real filename */
+    var filenameForDisplay: String {
+        return title ?? (isNetworkResource ? filename : NSString(string: filename).lastPathComponent)
+    }
 
-  var isCurrent: Bool
-  var isPlaying: Bool
-  var isNetworkResource: Bool
+    var isCurrent: Bool
+    var isPlaying: Bool
+    var isNetworkResource: Bool
 
-  var title: String?
+    var title: String?
 
-  init(filename: String, isCurrent: Bool, isPlaying: Bool, title: String?) {
-    self.filename = filename
-    self.isCurrent = isCurrent
-    self.isPlaying = isPlaying
-    self.title = title
-    self.isNetworkResource = Regex.url.matches(filename)
-  }
+    init(filename: String, isCurrent: Bool, isPlaying: Bool, title: String?) {
+        self.filename = filename
+        self.isCurrent = isCurrent
+        self.isPlaying = isPlaying
+        self.title = title
+        self.isNetworkResource = Regex.url.matches(filename)
+    }
 }

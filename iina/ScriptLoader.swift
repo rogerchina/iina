@@ -10,20 +10,22 @@ import Foundation
 
 class ScriptLoader {
 
-  private var list: [LuaScript] = []
+    private var list: [LuaScript] = []
 
-  var stringForOption: String {
-    get {
-      return list.map { $0.filePath }.joined(separator: ",")
+    var stringForOption: String {
+        get {
+            return list.map {
+                $0.filePath
+            }.joined(separator: ",")
+        }
     }
-  }
 
-  func add(defaultScript name: String) {
-    if let script = LuaScript(defaultName: name) {
-      list.append(script)
-    } else {
-      Utility.showAlert("error_loading_script")
+    func add(defaultScript name: String) {
+        if let script = LuaScript(defaultName: name) {
+            list.append(script)
+        } else {
+            Utility.showAlert("error_loading_script")
+        }
     }
-  }
 
 }

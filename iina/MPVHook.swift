@@ -9,14 +9,19 @@
 import Foundation
 
 struct MPVHook: RawRepresentable {
-  typealias RawValue = String
-  var rawValue: RawValue
+    typealias RawValue = String
+    var rawValue: RawValue
 
-  init(_ string: String) { self.rawValue = string }
-  init?(rawValue: RawValue) { self.rawValue = rawValue }
+    init(_ string: String) {
+        self.rawValue = string
+    }
 
-  static let onLoad = MPVHook("on_load")
-  static let onLoadFail = MPVHook("on_load_fail")
-  static let onPreLoaded = MPVHook("on_preloaded")
-  static let onUnLoad = MPVHook("on_unload")
+    init?(rawValue: RawValue) {
+        self.rawValue = rawValue
+    }
+
+    static let onLoad = MPVHook("on_load")
+    static let onLoadFail = MPVHook("on_load_fail")
+    static let onPreLoaded = MPVHook("on_preloaded")
+    static let onUnLoad = MPVHook("on_unload")
 }

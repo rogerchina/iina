@@ -114,6 +114,7 @@ typedef struct mpv_opengl_init_params {
      * from this callback.
      */
     void *(*get_proc_address)(void *ctx, const char *name);
+
     /**
      * Value passed as ctx parameter to get_proc_address().
      */

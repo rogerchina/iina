@@ -36,7 +36,7 @@ enum {
     /**
      * The maximum number of layers/planes in a DRM frame.
      */
-    AV_DRM_MAX_PLANES = 4
+            AV_DRM_MAX_PLANES = 4
 };
 
 /**

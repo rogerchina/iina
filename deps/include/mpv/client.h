@@ -244,7 +244,7 @@ typedef enum mpv_error {
      * return positive values, which also indicate success. API users can
      * hardcode the fact that ">= 0" means success.
      */
-    MPV_ERROR_SUCCESS           = 0,
+            MPV_ERROR_SUCCESS = 0,
     /**
      * The event ringbuffer is full. This means the client is choked, and can't
      * receive any events. This can happen when too many asynchronous requests
@@ -253,92 +253,92 @@ typedef enum mpv_error {
      * making asynchronous requests. (Bugs in the client API implementation
      * could also trigger this, e.g. if events become "lost".)
      */
-    MPV_ERROR_EVENT_QUEUE_FULL  = -1,
+            MPV_ERROR_EVENT_QUEUE_FULL = -1,
     /**
      * Memory allocation failed.
      */
-    MPV_ERROR_NOMEM             = -2,
+            MPV_ERROR_NOMEM = -2,
     /**
      * The mpv core wasn't configured and initialized yet. See the notes in
      * mpv_create().
      */
-    MPV_ERROR_UNINITIALIZED     = -3,
+            MPV_ERROR_UNINITIALIZED = -3,
     /**
      * Generic catch-all error if a parameter is set to an invalid or
      * unsupported value. This is used if there is no better error code.
      */
-    MPV_ERROR_INVALID_PARAMETER = -4,
+            MPV_ERROR_INVALID_PARAMETER = -4,
     /**
      * Trying to set an option that doesn't exist.
      */
-    MPV_ERROR_OPTION_NOT_FOUND  = -5,
+            MPV_ERROR_OPTION_NOT_FOUND = -5,
     /**
      * Trying to set an option using an unsupported MPV_FORMAT.
      */
-    MPV_ERROR_OPTION_FORMAT     = -6,
+            MPV_ERROR_OPTION_FORMAT = -6,
     /**
      * Setting the option failed. Typically this happens if the provided option
      * value could not be parsed.
      */
-    MPV_ERROR_OPTION_ERROR      = -7,
+            MPV_ERROR_OPTION_ERROR = -7,
     /**
      * The accessed property doesn't exist.
      */
-    MPV_ERROR_PROPERTY_NOT_FOUND = -8,
+            MPV_ERROR_PROPERTY_NOT_FOUND = -8,
     /**
      * Trying to set or get a property using an unsupported MPV_FORMAT.
      */
-    MPV_ERROR_PROPERTY_FORMAT   = -9,
+            MPV_ERROR_PROPERTY_FORMAT = -9,
     /**
      * The property exists, but is not available. This usually happens when the
      * associated subsystem is not active, e.g. querying audio parameters while
      * audio is disabled.
      */
-    MPV_ERROR_PROPERTY_UNAVAILABLE = -10,
+            MPV_ERROR_PROPERTY_UNAVAILABLE = -10,
     /**
      * Error setting or getting a property.
      */
-    MPV_ERROR_PROPERTY_ERROR    = -11,
+            MPV_ERROR_PROPERTY_ERROR = -11,
     /**
      * General error when running a command with mpv_command and similar.
      */
-    MPV_ERROR_COMMAND           = -12,
+            MPV_ERROR_COMMAND = -12,
     /**
      * Generic error on loading (usually used with mpv_event_end_file.error).
      */
-    MPV_ERROR_LOADING_FAILED    = -13,
+            MPV_ERROR_LOADING_FAILED = -13,
     /**
      * Initializing the audio output failed.
      */
-    MPV_ERROR_AO_INIT_FAILED    = -14,
+            MPV_ERROR_AO_INIT_FAILED = -14,
     /**
      * Initializing the video output failed.
      */
-    MPV_ERROR_VO_INIT_FAILED    = -15,
+            MPV_ERROR_VO_INIT_FAILED = -15,
     /**
      * There was no audio or video data to play. This also happens if the
      * file was recognized, but did not contain any audio or video streams,
      * or no streams were selected.
      */
-    MPV_ERROR_NOTHING_TO_PLAY   = -16,
+            MPV_ERROR_NOTHING_TO_PLAY = -16,
     /**
      * When trying to load the file, the file format could not be determined,
      * or the file was too broken to open it.
      */
-    MPV_ERROR_UNKNOWN_FORMAT    = -17,
+            MPV_ERROR_UNKNOWN_FORMAT = -17,
     /**
      * Generic error for signaling that certain system requirements are not
      * fulfilled.
      */
-    MPV_ERROR_UNSUPPORTED       = -18,
+            MPV_ERROR_UNSUPPORTED = -18,
     /**
      * The API function which was called is a stub only.
      */
-    MPV_ERROR_NOT_IMPLEMENTED   = -19,
+            MPV_ERROR_NOT_IMPLEMENTED = -19,
     /**
      * Unspecified error.
      */
-    MPV_ERROR_GENERIC           = -20
+            MPV_ERROR_GENERIC = -20
 } mpv_error;
 
 /**
@@ -628,7 +628,7 @@ typedef enum mpv_format {
     /**
      * Invalid. Sometimes used for empty values.
      */
-    MPV_FORMAT_NONE             = 0,
+            MPV_FORMAT_NONE = 0,
     /**
      * The basic type is char*. It returns the raw property string, like
      * using ${=property} in input.conf (see input.rst).
@@ -664,7 +664,7 @@ typedef enum mpv_format {
      * Or just use mpv_set_property_string().
      *
      */
-    MPV_FORMAT_STRING           = 1,
+            MPV_FORMAT_STRING = 1,
     /**
      * The basic type is char*. It returns the OSD property string, like
      * using ${property} in input.conf (see input.rst). In many cases, this
@@ -674,7 +674,7 @@ typedef enum mpv_format {
      *
      * Only valid when doing read access. The rest works like MPV_FORMAT_STRING.
      */
-    MPV_FORMAT_OSD_STRING       = 2,
+            MPV_FORMAT_OSD_STRING = 2,
     /**
      * The basic type is int. The only allowed values are 0 ("no")
      * and 1 ("yes").
@@ -691,15 +691,15 @@ typedef enum mpv_format {
      *     int flag = 1;
      *     mpv_set_property(ctx, "property", MPV_FORMAT_FLAG, &flag);
      */
-    MPV_FORMAT_FLAG             = 3,
+            MPV_FORMAT_FLAG = 3,
     /**
      * The basic type is int64_t.
      */
-    MPV_FORMAT_INT64            = 4,
+            MPV_FORMAT_INT64 = 4,
     /**
      * The basic type is double.
      */
-    MPV_FORMAT_DOUBLE           = 5,
+            MPV_FORMAT_DOUBLE = 5,
     /**
      * The type is mpv_node.
      *
@@ -732,21 +732,21 @@ typedef enum mpv_format {
      *     value.u.string = "hello";
      *     mpv_set_property(ctx, "property", MPV_FORMAT_NODE, &value);
      */
-    MPV_FORMAT_NODE             = 6,
+            MPV_FORMAT_NODE = 6,
     /**
      * Used with mpv_node only. Can usually not be used directly.
      */
-    MPV_FORMAT_NODE_ARRAY       = 7,
+            MPV_FORMAT_NODE_ARRAY = 7,
     /**
      * See MPV_FORMAT_NODE_ARRAY.
      */
-    MPV_FORMAT_NODE_MAP         = 8,
+            MPV_FORMAT_NODE_MAP = 8,
     /**
      * A raw, untyped byte array. Only used only with mpv_node, and only in
      * some very special situations. (Currently, only for the screenshot-raw
      * command.)
      */
-    MPV_FORMAT_BYTE_ARRAY       = 9
+            MPV_FORMAT_BYTE_ARRAY = 9
 } mpv_format;
 
 /**
@@ -894,7 +894,7 @@ void mpv_free_node_contents(mpv_node *node);
  * @return error code
  */
 int mpv_set_option(mpv_handle *ctx, const char *name, mpv_format format,
-                   void *data);
+        void *data);
 
 /**
  * Convenience function to set an option to a string value. This is like
@@ -969,7 +969,7 @@ int mpv_command_string(mpv_handle *ctx, const char *args);
  * @return error code (if parsing or queuing the command fails)
  */
 int mpv_command_async(mpv_handle *ctx, uint64_t reply_userdata,
-                      const char **args);
+        const char **args);
 
 /**
  * Same as mpv_command_node(), but run it asynchronously. Basically, this
@@ -987,7 +987,7 @@ int mpv_command_async(mpv_handle *ctx, uint64_t reply_userdata,
  * @return error code (if parsing or queuing the command fails)
  */
 int mpv_command_node_async(mpv_handle *ctx, uint64_t reply_userdata,
-                           mpv_node *args);
+        mpv_node *args);
 
 /**
  * Set a property to a given value. Properties are essentially variables which
@@ -1021,7 +1021,7 @@ int mpv_command_node_async(mpv_handle *ctx, uint64_t reply_userdata,
  * @return error code
  */
 int mpv_set_property(mpv_handle *ctx, const char *name, mpv_format format,
-                     void *data);
+        void *data);
 
 /**
  * Convenience function to set a property to a string value.
@@ -1046,7 +1046,7 @@ int mpv_set_property_string(mpv_handle *ctx, const char *name, const char *data)
  * @return error code if sending the request failed
  */
 int mpv_set_property_async(mpv_handle *ctx, uint64_t reply_userdata,
-                           const char *name, mpv_format format, void *data);
+        const char *name, mpv_format format, void *data);
 
 /**
  * Read the value of the given property.
@@ -1067,7 +1067,7 @@ int mpv_set_property_async(mpv_handle *ctx, uint64_t reply_userdata,
  * @return error code
  */
 int mpv_get_property(mpv_handle *ctx, const char *name, mpv_format format,
-                     void *data);
+        void *data);
 
 /**
  * Return the value of the property with the given name as string. This is
@@ -1106,7 +1106,7 @@ char *mpv_get_property_osd_string(mpv_handle *ctx, const char *name);
  * @return error code if sending the request failed
  */
 int mpv_get_property_async(mpv_handle *ctx, uint64_t reply_userdata,
-                           const char *name, mpv_format format);
+        const char *name, mpv_format format);
 
 /**
  * Get a notification whenever the given property changes. You will receive
@@ -1161,7 +1161,7 @@ int mpv_get_property_async(mpv_handle *ctx, uint64_t reply_userdata,
  * @return error code (usually fails only on OOM or unsupported format)
  */
 int mpv_observe_property(mpv_handle *mpv, uint64_t reply_userdata,
-                         const char *name, mpv_format format);
+        const char *name, mpv_format format);
 
 /**
  * Undo mpv_observe_property(). This will remove all observed properties for
@@ -1179,46 +1179,46 @@ typedef enum mpv_event_id {
     /**
      * Nothing happened. Happens on timeouts or sporadic wakeups.
      */
-    MPV_EVENT_NONE              = 0,
+            MPV_EVENT_NONE = 0,
     /**
      * Happens when the player quits. The player enters a state where it tries
      * to disconnect all clients. Most requests to the player will fail, and
      * the client should react to this and quit with mpv_destroy() as soon as
      * possible.
      */
-    MPV_EVENT_SHUTDOWN          = 1,
+            MPV_EVENT_SHUTDOWN = 1,
     /**
      * See mpv_request_log_messages().
      */
-    MPV_EVENT_LOG_MESSAGE       = 2,
+            MPV_EVENT_LOG_MESSAGE = 2,
     /**
      * Reply to a mpv_get_property_async() request.
      * See also mpv_event and mpv_event_property.
      */
-    MPV_EVENT_GET_PROPERTY_REPLY = 3,
+            MPV_EVENT_GET_PROPERTY_REPLY = 3,
     /**
      * Reply to a mpv_set_property_async() request.
      * (Unlike MPV_EVENT_GET_PROPERTY, mpv_event_property is not used.)
      */
-    MPV_EVENT_SET_PROPERTY_REPLY = 4,
+            MPV_EVENT_SET_PROPERTY_REPLY = 4,
     /**
      * Reply to a mpv_command_async() request.
      */
-    MPV_EVENT_COMMAND_REPLY     = 5,
+            MPV_EVENT_COMMAND_REPLY = 5,
     /**
      * Notification before playback start of a file (before the file is loaded).
      */
-    MPV_EVENT_START_FILE        = 6,
+            MPV_EVENT_START_FILE = 6,
     /**
      * Notification after playback end (after the file was unloaded).
      * See also mpv_event and mpv_event_end_file.
      */
-    MPV_EVENT_END_FILE          = 7,
+            MPV_EVENT_END_FILE = 7,
     /**
      * Notification when the file has been loaded (headers were read etc.), and
      * decoding starts.
      */
-    MPV_EVENT_FILE_LOADED       = 8,
+            MPV_EVENT_FILE_LOADED = 8,
 #if MPV_ENABLE_DEPRECATED
     /**
      * The list of video/audio/subtitle tracks was changed. (E.g. a new track
@@ -1229,7 +1229,7 @@ typedef enum mpv_event_id {
      *             "track-list" property. The event is redundant, and might
      *             be removed in the far future.
      */
-    MPV_EVENT_TRACKS_CHANGED    = 9,
+            MPV_EVENT_TRACKS_CHANGED = 9,
     /**
      * A video/audio/subtitle track was switched on or off.
      *
@@ -1237,7 +1237,7 @@ typedef enum mpv_event_id {
      *             "vid", "aid", and "sid" properties. The event is redundant,
      *             and might be removed in the far future.
      */
-    MPV_EVENT_TRACK_SWITCHED    = 10,
+            MPV_EVENT_TRACK_SWITCHED = 10,
 #endif
     /**
      * Idle mode was entered. In this mode, no file is played, and the playback
@@ -1245,7 +1245,7 @@ typedef enum mpv_event_id {
      * instead of entering idle mode, unless --idle was specified. If mpv
      * was started with mpv_create(), idle mode is enabled by default.)
      */
-    MPV_EVENT_IDLE              = 11,
+            MPV_EVENT_IDLE = 11,
 #if MPV_ENABLE_DEPRECATED
     /**
      * Playback was paused. This indicates the user pause state.
@@ -1267,7 +1267,7 @@ typedef enum mpv_event_id {
      * @deprecated The event is redundant with mpv_observe_property() as
      *             mentioned above, and might be removed in the far future.
      */
-    MPV_EVENT_PAUSE             = 12,
+            MPV_EVENT_PAUSE = 12,
     /**
      * Playback was unpaused. See MPV_EVENT_PAUSE for not so obvious details.
      *
@@ -1275,7 +1275,7 @@ typedef enum mpv_event_id {
      *             explained in the MPV_EVENT_PAUSE comments, and might be
      *             removed in the far future.
      */
-    MPV_EVENT_UNPAUSE           = 13,
+            MPV_EVENT_UNPAUSE = 13,
 #endif
     /**
      * Sent every time after a video frame is displayed. Note that currently,
@@ -1283,7 +1283,7 @@ typedef enum mpv_event_id {
      * is paused - but that will be removed in the future, and it will be
      * restricted to video frames only.
      */
-    MPV_EVENT_TICK              = 14,
+            MPV_EVENT_TICK = 14,
 #if MPV_ENABLE_DEPRECATED
     /**
      * @deprecated This was used internally with the internal "script_dispatch"
@@ -1293,7 +1293,7 @@ typedef enum mpv_event_id {
      *             This event never happens anymore, and is included in this
      *             header only for compatibility.
      */
-    MPV_EVENT_SCRIPT_INPUT_DISPATCH = 15,
+            MPV_EVENT_SCRIPT_INPUT_DISPATCH = 15,
 #endif
     /**
      * Triggered by the script-message input command. The command uses the
@@ -1302,7 +1302,7 @@ typedef enum mpv_event_id {
      * second argument as strings.
      * See also mpv_event and mpv_event_client_message.
      */
-    MPV_EVENT_CLIENT_MESSAGE    = 16,
+            MPV_EVENT_CLIENT_MESSAGE = 16,
     /**
      * Happens after video changed in some way. This can happen on resolution
      * changes, pixel format changes, or video filter changes. The event is
@@ -1313,12 +1313,12 @@ typedef enum mpv_event_id {
      * yourself whether the video parameters really changed before doing
      * something expensive.
      */
-    MPV_EVENT_VIDEO_RECONFIG    = 17,
+            MPV_EVENT_VIDEO_RECONFIG = 17,
     /**
      * Similar to MPV_EVENT_VIDEO_RECONFIG. This is relatively uninteresting,
      * because there is no such thing as audio output embedding.
      */
-    MPV_EVENT_AUDIO_RECONFIG    = 18,
+            MPV_EVENT_AUDIO_RECONFIG = 18,
 #if MPV_ENABLE_DEPRECATED
     /**
      * Happens when metadata (like file tags) is possibly updated. (It's left
@@ -1329,25 +1329,25 @@ typedef enum mpv_event_id {
      *             "metadata" property. The event is redundant, and might
      *             be removed in the far future.
      */
-    MPV_EVENT_METADATA_UPDATE   = 19,
+            MPV_EVENT_METADATA_UPDATE = 19,
 #endif
     /**
      * Happens when a seek was initiated. Playback stops. Usually it will
      * resume with MPV_EVENT_PLAYBACK_RESTART as soon as the seek is finished.
      */
-    MPV_EVENT_SEEK              = 20,
+            MPV_EVENT_SEEK = 20,
     /**
      * There was a discontinuity of some sort (like a seek), and playback
      * was reinitialized. Usually happens after seeking, or ordered chapter
      * segment switches. The main purpose is allowing the client to detect
      * when a seek request is finished.
      */
-    MPV_EVENT_PLAYBACK_RESTART  = 21,
+            MPV_EVENT_PLAYBACK_RESTART = 21,
     /**
      * Event sent due to mpv_observe_property().
      * See also mpv_event and mpv_event_property.
      */
-    MPV_EVENT_PROPERTY_CHANGE   = 22,
+            MPV_EVENT_PROPERTY_CHANGE = 22,
 #if MPV_ENABLE_DEPRECATED
     /**
      * Happens when the current chapter changes.
@@ -1356,7 +1356,7 @@ typedef enum mpv_event_id {
      *             "chapter" property. The event is redundant, and might
      *             be removed in the far future.
      */
-    MPV_EVENT_CHAPTER_CHANGE    = 23,
+            MPV_EVENT_CHAPTER_CHANGE = 23,
 #endif
     /**
      * Happens if the internal per-mpv_handle ringbuffer overflows, and at
@@ -1367,14 +1367,14 @@ typedef enum mpv_event_id {
      * Event delivery will continue normally once this event was returned
      * (this forces the client to empty the queue completely).
      */
-    MPV_EVENT_QUEUE_OVERFLOW    = 24,
+            MPV_EVENT_QUEUE_OVERFLOW = 24,
     /**
      * Triggered if a hook handler was registered with mpv_hook_add(), and the
      * hook is invoked. If you receive this, you must handle it, and continue
      * the hook with mpv_hook_continue().
      * See also mpv_event and mpv_event_hook.
      */
-    MPV_EVENT_HOOK              = 25,
+            MPV_EVENT_HOOK = 25,
     // Internal note: adjust INTERNAL_EVENT_BASE when adding new events.
 } mpv_event_id;
 
@@ -1429,12 +1429,12 @@ typedef struct mpv_event_property {
  * Unused numeric values are unused, but reserved for future use.
  */
 typedef enum mpv_log_level {
-    MPV_LOG_LEVEL_NONE  = 0,    /// "no"    - disable absolutely all messages
+    MPV_LOG_LEVEL_NONE = 0,    /// "no"    - disable absolutely all messages
     MPV_LOG_LEVEL_FATAL = 10,   /// "fatal" - critical/aborting errors
     MPV_LOG_LEVEL_ERROR = 20,   /// "error" - simple errors
-    MPV_LOG_LEVEL_WARN  = 30,   /// "warn"  - possible problems
-    MPV_LOG_LEVEL_INFO  = 40,   /// "info"  - informational message
-    MPV_LOG_LEVEL_V     = 50,   /// "v"     - noisy informational message
+    MPV_LOG_LEVEL_WARN = 30,   /// "warn"  - possible problems
+    MPV_LOG_LEVEL_INFO = 40,   /// "info"  - informational message
+    MPV_LOG_LEVEL_V = 50,   /// "v"     - noisy informational message
     MPV_LOG_LEVEL_DEBUG = 60,   /// "debug" - very noisy technical information
     MPV_LOG_LEVEL_TRACE = 70,   /// "trace" - extremely noisy
 } mpv_log_level;
@@ -1473,15 +1473,15 @@ typedef enum mpv_end_file_reason {
      * interrupted when playing a remote file. It also happens if the
      * playback range was restricted with --end or --frames or similar.
      */
-    MPV_END_FILE_REASON_EOF = 0,
+            MPV_END_FILE_REASON_EOF = 0,
     /**
      * Playback was stopped by an external action (e.g. playlist controls).
      */
-    MPV_END_FILE_REASON_STOP = 2,
+            MPV_END_FILE_REASON_STOP = 2,
     /**
      * Playback was stopped by the quit command or player shutdown.
      */
-    MPV_END_FILE_REASON_QUIT = 3,
+            MPV_END_FILE_REASON_QUIT = 3,
     /**
      * Some kind of error happened that lead to playback abort. Does not
      * necessarily happen on incomplete or broken files (in these cases, both
@@ -1489,7 +1489,7 @@ typedef enum mpv_end_file_reason {
      *
      * mpv_event_end_file.error will be set.
      */
-    MPV_END_FILE_REASON_ERROR = 4,
+            MPV_END_FILE_REASON_ERROR = 4,
     /**
      * The file was a playlist or similar. When the playlist is read, its
      * entries will be appended to the playlist after the entry of the current
@@ -1498,7 +1498,7 @@ typedef enum mpv_end_file_reason {
      * playback continues with the playlist contents.
      * Since API version 1.18.
      */
-    MPV_END_FILE_REASON_REDIRECT = 5,
+            MPV_END_FILE_REASON_REDIRECT = 5,
 } mpv_end_file_reason;
 
 typedef struct mpv_event_end_file {
@@ -1760,7 +1760,7 @@ void mpv_wait_async_requests(mpv_handle *ctx);
  * @return error code (usually fails only on OOM)
  */
 int mpv_hook_add(mpv_handle *ctx, uint64_t reply_userdata,
-                 const char *name, int priority);
+        const char *name, int priority);
 
 /**
  * Respond to a MPV_EVENT_HOOK event. You must call this after you have handled
@@ -1855,7 +1855,7 @@ typedef enum mpv_sub_api {
      *
      * @deprecated use render.h
      */
-    MPV_SUB_API_OPENGL_CB = 1
+            MPV_SUB_API_OPENGL_CB = 1
 } mpv_sub_api;
 
 /**

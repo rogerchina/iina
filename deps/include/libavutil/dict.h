@@ -101,7 +101,7 @@ typedef struct AVDictionary AVDictionary;
  * @return found entry or NULL in case no matching entry was found in the dictionary
  */
 AVDictionaryEntry *av_dict_get(const AVDictionary *m, const char *key,
-                               const AVDictionaryEntry *prev, int flags);
+        const AVDictionaryEntry *prev, int flags);
 
 /**
  * Get number of entries in dictionary.
@@ -154,8 +154,8 @@ int av_dict_set_int(AVDictionary **pm, const char *key, int64_t value, int flags
  * @return             0 on success, negative AVERROR code on failure
  */
 int av_dict_parse_string(AVDictionary **pm, const char *str,
-                         const char *key_val_sep, const char *pairs_sep,
-                         int flags);
+        const char *key_val_sep, const char *pairs_sep,
+        int flags);
 
 /**
  * Copy entries from one AVDictionary struct into another.
@@ -191,7 +191,7 @@ void av_dict_free(AVDictionary **m);
  * @warning Separators cannot be neither '\\' nor '\0'. They also cannot be the same.
  */
 int av_dict_get_string(const AVDictionary *m, char **buffer,
-                       const char key_val_sep, const char pairs_sep);
+        const char key_val_sep, const char pairs_sep);
 
 /**
  * @}

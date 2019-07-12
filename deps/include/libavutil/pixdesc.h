@@ -236,7 +236,7 @@ enum AVPixelFormat av_pix_fmt_desc_get_id(const AVPixFmtDescriptor *desc);
  * @return 0 on success, AVERROR(ENOSYS) on invalid or unknown pixel format
  */
 int av_pix_fmt_get_chroma_sub_sample(enum AVPixelFormat pix_fmt,
-                                     int *h_shift, int *v_shift);
+        int *h_shift, int *v_shift);
 
 /**
  * @return number of planes in pix_fmt, a negative AVERROR if pix_fmt is not a
@@ -326,7 +326,7 @@ const char *av_get_pix_fmt_name(enum AVPixelFormat pix_fmt);
  * corresponding header.
  */
 char *av_get_pix_fmt_string(char *buf, int buf_size,
-                            enum AVPixelFormat pix_fmt);
+        enum AVPixelFormat pix_fmt);
 
 /**
  * Read a line from an image, and write the values of the
@@ -346,13 +346,13 @@ char *av_get_pix_fmt_string(char *buf, int buf_size,
  * @param dst_element_size size of elements in dst array (2 or 4 byte)
  */
 void av_read_image_line2(void *dst, const uint8_t *data[4],
-                        const int linesize[4], const AVPixFmtDescriptor *desc,
-                        int x, int y, int c, int w, int read_pal_component,
-                        int dst_element_size);
+        const int linesize[4], const AVPixFmtDescriptor *desc,
+        int x, int y, int c, int w, int read_pal_component,
+        int dst_element_size);
 
 void av_read_image_line(uint16_t *dst, const uint8_t *data[4],
-                        const int linesize[4], const AVPixFmtDescriptor *desc,
-                        int x, int y, int c, int w, int read_pal_component);
+        const int linesize[4], const AVPixFmtDescriptor *desc,
+        int x, int y, int c, int w, int read_pal_component);
 
 /**
  * Write the values from src to the pixel format component c of an
@@ -370,12 +370,12 @@ void av_read_image_line(uint16_t *dst, const uint8_t *data[4],
  * @param src_element_size size of elements in src array (2 or 4 byte)
  */
 void av_write_image_line2(const void *src, uint8_t *data[4],
-                         const int linesize[4], const AVPixFmtDescriptor *desc,
-                         int x, int y, int c, int w, int src_element_size);
+        const int linesize[4], const AVPixFmtDescriptor *desc,
+        int x, int y, int c, int w, int src_element_size);
 
 void av_write_image_line(const uint16_t *src, uint8_t *data[4],
-                         const int linesize[4], const AVPixFmtDescriptor *desc,
-                         int x, int y, int c, int w);
+        const int linesize[4], const AVPixFmtDescriptor *desc,
+        int x, int y, int c, int w);
 
 /**
  * Utility function to swap the endianness of a pixel format.
@@ -413,8 +413,8 @@ enum AVPixelFormat av_pix_fmt_swap_endianness(enum AVPixelFormat pix_fmt);
  * (maximum loss for an invalid dst_pix_fmt).
  */
 int av_get_pix_fmt_loss(enum AVPixelFormat dst_pix_fmt,
-                        enum AVPixelFormat src_pix_fmt,
-                        int has_alpha);
+        enum AVPixelFormat src_pix_fmt,
+        int has_alpha);
 
 /**
  * Compute what kind of losses will occur when converting from one specific
@@ -435,6 +435,6 @@ int av_get_pix_fmt_loss(enum AVPixelFormat dst_pix_fmt,
  * (maximum loss for an invalid dst_pix_fmt).
  */
 enum AVPixelFormat av_find_best_pix_fmt_of_2(enum AVPixelFormat dst_pix_fmt1, enum AVPixelFormat dst_pix_fmt2,
-                                             enum AVPixelFormat src_pix_fmt, int has_alpha, int *loss_ptr);
+        enum AVPixelFormat src_pix_fmt, int has_alpha, int *loss_ptr);
 
 #endif /* AVUTIL_PIXDESC_H */

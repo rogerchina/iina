@@ -65,8 +65,8 @@ const char *avfilter_configuration(void);
 const char *avfilter_license(void);
 
 typedef struct AVFilterContext AVFilterContext;
-typedef struct AVFilterLink    AVFilterLink;
-typedef struct AVFilterPad     AVFilterPad;
+typedef struct AVFilterLink AVFilterLink;
+typedef struct AVFilterPad AVFilterPad;
 typedef struct AVFilterFormats AVFilterFormats;
 
 /**
@@ -342,13 +342,13 @@ struct AVFilterContext {
 
     char *name;                     ///< name of this filter instance
 
-    AVFilterPad   *input_pads;      ///< array of input pads
+    AVFilterPad *input_pads;      ///< array of input pads
     AVFilterLink **inputs;          ///< array of pointers to input links
-    unsigned    nb_inputs;          ///< number of input pads
+    unsigned nb_inputs;          ///< number of input pads
 
-    AVFilterPad   *output_pads;     ///< array of output pads
+    AVFilterPad *output_pads;     ///< array of output pads
     AVFilterLink **outputs;         ///< array of pointers to output links
-    unsigned    nb_outputs;         ///< number of output pads
+    unsigned nb_outputs;         ///< number of output pads
 
     void *priv;                     ///< private data for use by the filter
 
@@ -485,9 +485,9 @@ struct AVFilterLink {
      * Lists of channel layouts and sample rates used for automatic
      * negotiation.
      */
-    AVFilterFormats  *in_samplerates;
+    AVFilterFormats *in_samplerates;
     AVFilterFormats *out_samplerates;
-    struct AVFilterChannelLayouts  *in_channel_layouts;
+    struct AVFilterChannelLayouts *in_channel_layouts;
     struct AVFilterChannelLayouts *out_channel_layouts;
 
     /**
@@ -656,7 +656,7 @@ struct AVFilterLink {
  * @return       zero on success
  */
 int avfilter_link(AVFilterContext *src, unsigned srcpad,
-                  AVFilterContext *dst, unsigned dstpad);
+        AVFilterContext *dst, unsigned dstpad);
 
 /**
  * Free the link in *link, and set its pointer to NULL.
@@ -670,6 +670,7 @@ void avfilter_link_free(AVFilterLink **link);
  */
 attribute_deprecated
 int avfilter_link_get_channels(AVFilterLink *link);
+
 #endif
 
 /**
@@ -733,6 +734,7 @@ int avfilter_register(AVFilter *filter);
  */
 attribute_deprecated
 const AVFilter *avfilter_next(const AVFilter *prev);
+
 #endif
 
 /**
@@ -797,7 +799,7 @@ void avfilter_free(AVFilterContext *filter);
  * @return     zero on success
  */
 int avfilter_insert_filter(AVFilterLink *link, AVFilterContext *filt,
-                           unsigned filt_srcpad_idx, unsigned filt_dstpad_idx);
+        unsigned filt_srcpad_idx, unsigned filt_dstpad_idx);
 
 /**
  * @return AVClass for AVFilterContext.
@@ -835,7 +837,7 @@ typedef int (avfilter_action_func)(AVFilterContext *ctx, void *arg, int jobnr, i
  * @return 0 on success, a negative AVERROR on error
  */
 typedef int (avfilter_execute_func)(AVFilterContext *ctx, avfilter_action_func *func,
-                                    void *arg, int *ret, int nb_jobs);
+        void *arg, int *ret, int nb_jobs);
 
 typedef struct AVFilterGraph {
     const AVClass *av_class;
@@ -931,8 +933,8 @@ AVFilterGraph *avfilter_graph_alloc(void);
  *         avfilter_graph_get_filter()) on success or NULL on failure.
  */
 AVFilterContext *avfilter_graph_alloc_filter(AVFilterGraph *graph,
-                                             const AVFilter *filter,
-                                             const char *name);
+        const AVFilter *filter,
+        const char *name);
 
 /**
  * Get a filter instance identified by instance name from graph.
@@ -958,8 +960,8 @@ AVFilterContext *avfilter_graph_get_filter(AVFilterGraph *graph, const char *nam
  * negative value otherwise
  */
 int avfilter_graph_create_filter(AVFilterContext **filt_ctx, const AVFilter *filt,
-                                 const char *name, const char *args, void *opaque,
-                                 AVFilterGraph *graph_ctx);
+        const char *name, const char *args, void *opaque,
+        AVFilterGraph *graph_ctx);
 
 /**
  * Enable or disable automatic format conversion inside the graph.
@@ -972,7 +974,7 @@ int avfilter_graph_create_filter(AVFilterContext **filt_ctx, const AVFilter *fil
 void avfilter_graph_set_auto_convert(AVFilterGraph *graph, unsigned flags);
 
 enum {
-    AVFILTER_AUTO_CONVERT_ALL  =  0, /**< all automatic conversions enabled */
+    AVFILTER_AUTO_CONVERT_ALL = 0, /**< all automatic conversions enabled */
     AVFILTER_AUTO_CONVERT_NONE = -1, /**< all automatic conversions disabled */
 };
 
@@ -1046,8 +1048,8 @@ void avfilter_inout_free(AVFilterInOut **inout);
  * @return zero on success, a negative AVERROR code on error
  */
 int avfilter_graph_parse(AVFilterGraph *graph, const char *filters,
-                         AVFilterInOut *inputs, AVFilterInOut *outputs,
-                         void *log_ctx);
+        AVFilterInOut *inputs, AVFilterInOut *outputs,
+        void *log_ctx);
 
 /**
  * Add a graph described by a string to a graph.
@@ -1067,8 +1069,8 @@ int avfilter_graph_parse(AVFilterGraph *graph, const char *filters,
  * @return non negative on success, a negative AVERROR code on error
  */
 int avfilter_graph_parse_ptr(AVFilterGraph *graph, const char *filters,
-                             AVFilterInOut **inputs, AVFilterInOut **outputs,
-                             void *log_ctx);
+        AVFilterInOut **inputs, AVFilterInOut **outputs,
+        void *log_ctx);
 
 /**
  * Add a graph described by a string to a graph.
@@ -1093,8 +1095,8 @@ int avfilter_graph_parse_ptr(AVFilterGraph *graph, const char *filters,
  * filters.
  */
 int avfilter_graph_parse2(AVFilterGraph *graph, const char *filters,
-                          AVFilterInOut **inputs,
-                          AVFilterInOut **outputs);
+        AVFilterInOut **inputs,
+        AVFilterInOut **outputs);
 
 /**
  * Send a command to one or more filter instances.

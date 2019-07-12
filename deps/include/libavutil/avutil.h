@@ -305,9 +305,8 @@ char av_get_picture_type_char(enum AVPictureType pict_type);
 /**
  * Return x default pointer in case p is NULL.
  */
-static inline void *av_x_if_null(const void *p, const void *x)
-{
-    return (void *)(intptr_t)(p ? p : x);
+static inline void *av_x_if_null(const void *p, const void *x) {
+    return (void *) (intptr_t) (p ? p : x);
 }
 
 /**
@@ -319,7 +318,7 @@ static inline void *av_x_if_null(const void *p, const void *x)
  * @return  length of the list, in elements, not counting the terminator
  */
 unsigned av_int_list_length_for_size(unsigned elsize,
-                                     const void *list, uint64_t term) av_pure;
+        const void *list, uint64_t term) av_pure;
 
 /**
  * Compute the length of an integer list.

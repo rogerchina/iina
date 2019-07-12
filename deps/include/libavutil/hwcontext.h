@@ -300,7 +300,7 @@ int av_hwdevice_ctx_init(AVBufferRef *ref);
  * @return 0 on success, a negative AVERROR code on failure.
  */
 int av_hwdevice_ctx_create(AVBufferRef **device_ctx, enum AVHWDeviceType type,
-                           const char *device, AVDictionary *opts, int flags);
+        const char *device, AVDictionary *opts, int flags);
 
 /**
  * Create a new device of the specified type from an existing device.
@@ -324,8 +324,8 @@ int av_hwdevice_ctx_create(AVBufferRef **device_ctx, enum AVHWDeviceType type,
  * @return        Zero on success, a negative AVERROR code on failure.
  */
 int av_hwdevice_ctx_create_derived(AVBufferRef **dst_ctx,
-                                   enum AVHWDeviceType type,
-                                   AVBufferRef *src_ctx, int flags);
+        enum AVHWDeviceType type,
+        AVBufferRef *src_ctx, int flags);
 
 
 /**
@@ -395,12 +395,12 @@ enum AVHWFrameTransferDirection {
     /**
      * Transfer the data from the queried hw frame.
      */
-    AV_HWFRAME_TRANSFER_DIRECTION_FROM,
+            AV_HWFRAME_TRANSFER_DIRECTION_FROM,
 
     /**
      * Transfer the data to the queried hw frame.
      */
-    AV_HWFRAME_TRANSFER_DIRECTION_TO,
+            AV_HWFRAME_TRANSFER_DIRECTION_TO,
 };
 
 /**
@@ -419,8 +419,8 @@ enum AVHWFrameTransferDirection {
  * @return 0 on success, a negative AVERROR code on failure.
  */
 int av_hwframe_transfer_get_formats(AVBufferRef *hwframe_ctx,
-                                    enum AVHWFrameTransferDirection dir,
-                                    enum AVPixelFormat **formats, int flags);
+        enum AVHWFrameTransferDirection dir,
+        enum AVPixelFormat **formats, int flags);
 
 
 /**
@@ -483,7 +483,7 @@ void *av_hwdevice_hwconfig_alloc(AVBufferRef *device_ctx);
  *         on the device, or NULL if not available.
  */
 AVHWFramesConstraints *av_hwdevice_get_hwframe_constraints(AVBufferRef *ref,
-                                                           const void *hwconfig);
+        const void *hwconfig);
 
 /**
  * Free an AVHWFrameConstraints structure.
@@ -500,23 +500,23 @@ enum {
     /**
      * The mapping must be readable.
      */
-    AV_HWFRAME_MAP_READ      = 1 << 0,
+            AV_HWFRAME_MAP_READ = 1 << 0,
     /**
      * The mapping must be writeable.
      */
-    AV_HWFRAME_MAP_WRITE     = 1 << 1,
+            AV_HWFRAME_MAP_WRITE = 1 << 1,
     /**
      * The mapped frame will be overwritten completely in subsequent
      * operations, so the current frame data need not be loaded.  Any values
      * which are not overwritten are unspecified.
      */
-    AV_HWFRAME_MAP_OVERWRITE = 1 << 2,
+            AV_HWFRAME_MAP_OVERWRITE = 1 << 2,
     /**
      * The mapping must be direct.  That is, there must not be any copying in
      * the map or unmap steps.  Note that performance of direct mappings may
      * be much lower than normal memory.
      */
-    AV_HWFRAME_MAP_DIRECT    = 1 << 3,
+            AV_HWFRAME_MAP_DIRECT = 1 << 3,
 };
 
 /**
@@ -576,9 +576,9 @@ int av_hwframe_map(AVFrame *dst, const AVFrame *src, int flags);
  * @return       Zero on success, negative AVERROR code on failure.
  */
 int av_hwframe_ctx_create_derived(AVBufferRef **derived_frame_ctx,
-                                  enum AVPixelFormat format,
-                                  AVBufferRef *derived_device_ctx,
-                                  AVBufferRef *source_frame_ctx,
-                                  int flags);
+        enum AVPixelFormat format,
+        AVBufferRef *derived_device_ctx,
+        AVBufferRef *source_frame_ctx,
+        int flags);
 
 #endif /* AVUTIL_HWCONTEXT_H */

@@ -184,9 +184,9 @@ void sws_freeContext(struct SwsContext *swsContext);
  *       written
  */
 struct SwsContext *sws_getContext(int srcW, int srcH, enum AVPixelFormat srcFormat,
-                                  int dstW, int dstH, enum AVPixelFormat dstFormat,
-                                  int flags, SwsFilter *srcFilter,
-                                  SwsFilter *dstFilter, const double *param);
+        int dstW, int dstH, enum AVPixelFormat dstFormat,
+        int flags, SwsFilter *srcFilter,
+        SwsFilter *dstFilter, const double *param);
 
 /**
  * Scale the image slice in srcSlice and put the resulting scaled
@@ -215,8 +215,8 @@ struct SwsContext *sws_getContext(int srcW, int srcH, enum AVPixelFormat srcForm
  * @return          the height of the output slice
  */
 int sws_scale(struct SwsContext *c, const uint8_t *const srcSlice[],
-              const int srcStride[], int srcSliceY, int srcSliceH,
-              uint8_t *const dst[], const int dstStride[]);
+        const int srcStride[], int srcSliceY, int srcSliceH,
+        uint8_t *const dst[], const int dstStride[]);
 
 /**
  * @param dstRange flag indicating the while-black range of the output (1=jpeg / 0=mpeg)
@@ -229,15 +229,15 @@ int sws_scale(struct SwsContext *c, const uint8_t *const srcSlice[],
  * @return -1 if not supported
  */
 int sws_setColorspaceDetails(struct SwsContext *c, const int inv_table[4],
-                             int srcRange, const int table[4], int dstRange,
-                             int brightness, int contrast, int saturation);
+        int srcRange, const int table[4], int dstRange,
+        int brightness, int contrast, int saturation);
 
 /**
  * @return -1 if not supported
  */
 int sws_getColorspaceDetails(struct SwsContext *c, int **inv_table,
-                             int *srcRange, int **table, int *dstRange,
-                             int *brightness, int *contrast, int *saturation);
+        int *srcRange, int **table, int *dstRange,
+        int *brightness, int *contrast, int *saturation);
 
 /**
  * Allocate and return an uninitialized vector with length coefficients.
@@ -261,22 +261,32 @@ void sws_scaleVec(SwsVector *a, double scalar);
 void sws_normalizeVec(SwsVector *a, double height);
 
 #if FF_API_SWS_VECTOR
+
 attribute_deprecated SwsVector *sws_getConstVec(double c, int length);
+
 attribute_deprecated SwsVector *sws_getIdentityVec(void);
+
 attribute_deprecated void sws_convVec(SwsVector *a, SwsVector *b);
+
 attribute_deprecated void sws_addVec(SwsVector *a, SwsVector *b);
+
 attribute_deprecated void sws_subVec(SwsVector *a, SwsVector *b);
+
 attribute_deprecated void sws_shiftVec(SwsVector *a, int shift);
+
 attribute_deprecated SwsVector *sws_cloneVec(SwsVector *a);
+
 attribute_deprecated void sws_printVec2(SwsVector *a, AVClass *log_ctx, int log_level);
+
 #endif
 
 void sws_freeVec(SwsVector *a);
 
 SwsFilter *sws_getDefaultFilter(float lumaGBlur, float chromaGBlur,
-                                float lumaSharpen, float chromaSharpen,
-                                float chromaHShift, float chromaVShift,
-                                int verbose);
+        float lumaSharpen, float chromaSharpen,
+        float chromaHShift, float chromaVShift,
+        int verbose);
+
 void sws_freeFilter(SwsFilter *filter);
 
 /**
@@ -292,10 +302,10 @@ void sws_freeFilter(SwsFilter *filter);
  * are assumed to remain the same.
  */
 struct SwsContext *sws_getCachedContext(struct SwsContext *context,
-                                        int srcW, int srcH, enum AVPixelFormat srcFormat,
-                                        int dstW, int dstH, enum AVPixelFormat dstFormat,
-                                        int flags, SwsFilter *srcFilter,
-                                        SwsFilter *dstFilter, const double *param);
+        int srcW, int srcH, enum AVPixelFormat srcFormat,
+        int dstW, int dstH, enum AVPixelFormat dstFormat,
+        int flags, SwsFilter *srcFilter,
+        SwsFilter *dstFilter, const double *param);
 
 /**
  * Convert an 8-bit paletted frame into a frame with a color depth of 32 bits.

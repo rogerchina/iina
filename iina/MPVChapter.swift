@@ -10,19 +10,19 @@ import Cocoa
 
 class MPVChapter: NSObject {
 
-  private var privTitle: String?
-  var title: String {
-    get {
-      return privTitle ?? "\(Constants.String.chapter) \(index)"
+    private var privTitle: String?
+    var title: String {
+        get {
+            return privTitle ?? "\(Constants.String.chapter) \(index)"
+        }
     }
-  }
-  var time: VideoTime
-  var index: Int
+    var time: VideoTime
+    var index: Int
 
-  init(title: String?, startTime: Double, index: Int) {
-    self.privTitle = title
-    self.time = VideoTime(startTime)
-    self.index = index
-  }
+    init(title: String?, startTime: Double, index: Int) {
+        self.privTitle = title
+        self.time = VideoTime(startTime)
+        self.index = index
+    }
 
 }

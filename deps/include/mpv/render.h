@@ -126,7 +126,7 @@ typedef enum mpv_render_param_type {
      * Not a valid value, but also used to terminate a params array. Its value
      * is always guaranteed to be 0 (even if the ABI changes in the future).
      */
-    MPV_RENDER_PARAM_INVALID = 0,
+            MPV_RENDER_PARAM_INVALID = 0,
     /**
      * The render API to use. Valid for mpv_render_context_create().
      *
@@ -142,18 +142,18 @@ typedef enum mpv_render_param_type {
      *      calling mpv_render_* functions (unless specified otherwise). It
      *      must be the same context for the same mpv_render_context.
      */
-    MPV_RENDER_PARAM_API_TYPE = 1,
+            MPV_RENDER_PARAM_API_TYPE = 1,
     /**
      * Required parameters for initializing the OpenGL renderer. Valid for
      * mpv_render_context_create().
      * Type: mpv_opengl_init_params*
      */
-    MPV_RENDER_PARAM_OPENGL_INIT_PARAMS = 2,
+            MPV_RENDER_PARAM_OPENGL_INIT_PARAMS = 2,
     /**
      * Describes a GL render target. Valid for mpv_render_context_render().
      * Type: mpv_opengl_fbo*
      */
-    MPV_RENDER_PARAM_OPENGL_FBO = 3,
+            MPV_RENDER_PARAM_OPENGL_FBO = 3,
     /**
      * Control flipped rendering. Valid for mpv_render_context_render().
      * Type: int*
@@ -161,7 +161,7 @@ typedef enum mpv_render_param_type {
      * which is needed e.g. when rendering to an OpenGL default framebuffer
      * (which has a flipped coordinate system).
      */
-    MPV_RENDER_PARAM_FLIP_Y = 4,
+            MPV_RENDER_PARAM_FLIP_Y = 4,
     /**
      * Control surface depth. Valid for mpv_render_context_render().
      * Type: int*
@@ -169,34 +169,34 @@ typedef enum mpv_render_param_type {
      * bits per channel. If omitted or set to 0, the renderer will assume 8.
      * Typically used to control dithering.
      */
-    MPV_RENDER_PARAM_DEPTH = 5,
+            MPV_RENDER_PARAM_DEPTH = 5,
     /**
      * ICC profile blob. Valid for mpv_render_context_set_parameter().
      * Type: mpv_byte_array*
      * Set an ICC profile for use with the "icc-profile-auto" option. (If the
      * option is not enabled, the ICC data will not be used.)
      */
-    MPV_RENDER_PARAM_ICC_PROFILE = 6,
+            MPV_RENDER_PARAM_ICC_PROFILE = 6,
     /**
      * Ambient light in lux. Valid for mpv_render_context_set_parameter().
      * Type: int*
      * This can be used for automatic gamma correction.
      */
-    MPV_RENDER_PARAM_AMBIENT_LIGHT = 7,
+            MPV_RENDER_PARAM_AMBIENT_LIGHT = 7,
     /**
      * X11 Display, sometimes used for hwdec. Valid for
      * mpv_render_context_create(). The Display must stay valid for the lifetime
      * of the mpv_render_context.
      * Type: Display*
      */
-    MPV_RENDER_PARAM_X11_DISPLAY = 8,
+            MPV_RENDER_PARAM_X11_DISPLAY = 8,
     /**
      * Wayland display, sometimes used for hwdec. Valid for
      * mpv_render_context_create(). The wl_display must stay valid for the
      * lifetime of the mpv_render_context.
      * Type: struct wl_display*
      */
-    MPV_RENDER_PARAM_WL_DISPLAY = 9,
+            MPV_RENDER_PARAM_WL_DISPLAY = 9,
     /**
      * Better control about rendering and enabling some advanced features. Valid
      * for mpv_render_context_create().
@@ -229,7 +229,7 @@ typedef enum mpv_render_param_type {
      *
      * Type: int*: 0 for disable (default), 1 for enable
      */
-    MPV_RENDER_PARAM_ADVANCED_CONTROL = 10,
+            MPV_RENDER_PARAM_ADVANCED_CONTROL = 10,
     /**
      * Return information about the next frame to render. Valid for
      * mpv_render_context_get_info().
@@ -242,7 +242,7 @@ typedef enum mpv_render_param_type {
      * mpv_render_context_render(). If there is no next frame, then the
      * return value will have is_valid set to 0.
      */
-    MPV_RENDER_PARAM_NEXT_FRAME_INFO = 11,
+            MPV_RENDER_PARAM_NEXT_FRAME_INFO = 11,
     /**
      * Enable or disable video timing. Valid for mpv_render_context_render().
      *
@@ -259,7 +259,7 @@ typedef enum mpv_render_param_type {
      * Disabling this without doing anything in addition will result in A/V sync
      * being slightly off.
      */
-    MPV_RENDER_PARAM_BLOCK_FOR_TARGET_TIME = 12,
+            MPV_RENDER_PARAM_BLOCK_FOR_TARGET_TIME = 12,
     /**
      * Use to skip rendering in mpv_render_context_render().
      *
@@ -275,19 +275,19 @@ typedef enum mpv_render_param_type {
      * you have to call mpv_render_context_report_swap(). It also does timing
      * in the same way.
      */
-    MPV_RENDER_PARAM_SKIP_RENDERING = 13,
+            MPV_RENDER_PARAM_SKIP_RENDERING = 13,
     /**
      * DRM display, contains drm display handles.
      * Valid for mpv_render_context_create().
      * Type : struct mpv_opengl_drm_params*
      */
-    MPV_RENDER_PARAM_DRM_DISPLAY = 14,
+            MPV_RENDER_PARAM_DRM_DISPLAY = 14,
     /**
      * DRM osd size, contains osd dimensions.
      * Valid for mpv_render_context_create().
      * Type : struct mpv_opengl_drm_osd_size*
      */
-    MPV_RENDER_PARAM_DRM_OSD_SIZE = 15,
+            MPV_RENDER_PARAM_DRM_OSD_SIZE = 15,
 } mpv_render_param_type;
 
 /**
@@ -345,7 +345,7 @@ typedef enum mpv_render_frame_info_flag {
      * MPV_RENDER_UPDATE_FRAME flag set, this flag will usually be set as well,
      * unless the frame is rendered, or discarded by other asynchronous events.
      */
-    MPV_RENDER_FRAME_INFO_PRESENT         = 1 << 0,
+            MPV_RENDER_FRAME_INFO_PRESENT = 1 << 0,
     /**
      * If set, the frame is not an actual new video frame, but a redraw request.
      * For example if the video is paused, and an option that affects video
@@ -356,7 +356,7 @@ typedef enum mpv_render_frame_info_flag {
      *
      * Implies MPV_RENDER_FRAME_INFO_PRESENT.
      */
-    MPV_RENDER_FRAME_INFO_REDRAW          = 1 << 1,
+            MPV_RENDER_FRAME_INFO_REDRAW = 1 << 1,
     /**
      * If set, this is supposed to reproduce the previous frame perfectly. This
      * is usually used for certain "video-sync" options ("display-..." modes).
@@ -364,7 +364,7 @@ typedef enum mpv_render_frame_info_flag {
      *
      * Implies MPV_RENDER_FRAME_INFO_PRESENT.
      */
-    MPV_RENDER_FRAME_INFO_REPEAT          = 1 << 2,
+            MPV_RENDER_FRAME_INFO_REPEAT = 1 << 2,
     /**
      * If set, the player timing code expects that the user thread blocks on
      * vsync (by either delaying the render call, or by making a call to
@@ -372,7 +372,7 @@ typedef enum mpv_render_frame_info_flag {
      *
      * Implies MPV_RENDER_FRAME_INFO_PRESENT.
      */
-    MPV_RENDER_FRAME_INFO_BLOCK_VSYNC     = 1 << 3,
+            MPV_RENDER_FRAME_INFO_BLOCK_VSYNC = 1 << 3,
 } mpv_render_frame_info_flag;
 
 /**
@@ -433,7 +433,7 @@ typedef struct mpv_render_frame_info {
  *                                   not valid.
  */
 int mpv_render_context_create(mpv_render_context **res, mpv_handle *mpv,
-                              mpv_render_param *params);
+        mpv_render_param *params);
 
 /**
  * Attempt to change a single parameter. Not all backends and parameter types
@@ -446,7 +446,7 @@ int mpv_render_context_create(mpv_render_context **res, mpv_handle *mpv,
  *         and situation.
  */
 int mpv_render_context_set_parameter(mpv_render_context *ctx,
-                                     mpv_render_param param);
+        mpv_render_param param);
 
 /**
  * Retrieve information from the render context. This is NOT a counterpart to
@@ -468,7 +468,7 @@ int mpv_render_context_set_parameter(mpv_render_context *ctx,
  *         param.type, or if retrieving it is not supported.
  */
 int mpv_render_context_get_info(mpv_render_context *ctx,
-                                mpv_render_param param);
+        mpv_render_param param);
 
 typedef void (*mpv_render_update_fn)(void *cb_ctx);
 
@@ -489,8 +489,8 @@ typedef void (*mpv_render_update_fn)(void *cb_ctx);
  * @param callback_ctx opaque argument to the callback
  */
 void mpv_render_context_set_update_callback(mpv_render_context *ctx,
-                                            mpv_render_update_fn callback,
-                                            void *callback_ctx);
+        mpv_render_update_fn callback,
+        void *callback_ctx);
 
 /**
  * The API user is supposed to call this when the update callback was invoked
@@ -526,7 +526,7 @@ typedef enum mpv_render_update_flag {
      * A new video frame must be rendered. mpv_render_context_render() must be
      * called.
      */
-    MPV_RENDER_UPDATE_FRAME         = 1 << 0,
+            MPV_RENDER_UPDATE_FRAME = 1 << 0,
 } mpv_render_context_flag;
 
 /**

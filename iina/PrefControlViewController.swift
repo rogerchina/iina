@@ -11,32 +11,32 @@ import Cocoa
 @objcMembers
 class PrefControlViewController: PreferenceViewController, PreferenceWindowEmbeddable {
 
-  override var nibName: NSNib.Name {
-    return NSNib.Name("PrefControlViewController")
-  }
+    override var nibName: NSNib.Name {
+        return NSNib.Name("PrefControlViewController")
+    }
 
-  var preferenceTabTitle: String {
-    return NSLocalizedString("preference.control", comment: "Control")
-  }
+    var preferenceTabTitle: String {
+        return NSLocalizedString("preference.control", comment: "Control")
+    }
 
-  var preferenceTabImage: NSImage {
-    return NSImage(named: NSImage.Name("pref_control"))!
-  }
+    var preferenceTabImage: NSImage {
+        return NSImage(named: NSImage.Name("pref_control"))!
+    }
 
-  override var sectionViews: [NSView] {
-    return [sectionTrackpadView, sectionMouseView]
-  }
+    override var sectionViews: [NSView] {
+        return [sectionTrackpadView, sectionMouseView]
+    }
 
-  @IBOutlet var sectionTrackpadView: NSView!
-  @IBOutlet var sectionMouseView: NSView!
+    @IBOutlet var sectionTrackpadView: NSView!
+    @IBOutlet var sectionMouseView: NSView!
 
-  @IBOutlet weak var forceTouchLabel: NSTextField!
-  @IBOutlet weak var scrollVerticallyLabel: NSTextField!
+    @IBOutlet weak var forceTouchLabel: NSTextField!
+    @IBOutlet weak var scrollVerticallyLabel: NSTextField!
 
-  override func viewDidLoad() {
-    super.viewDidLoad()
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-    forceTouchLabel.widthAnchor.constraint(equalTo: scrollVerticallyLabel.widthAnchor, multiplier: 1).isActive = true
-  }
+        forceTouchLabel.widthAnchor.constraint(equalTo: scrollVerticallyLabel.widthAnchor, multiplier: 1).isActive = true
+    }
 
 }

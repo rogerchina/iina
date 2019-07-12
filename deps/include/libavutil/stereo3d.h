@@ -52,7 +52,7 @@ enum AVStereo3DType {
     /**
      * Video is not stereoscopic (and metadata has to be there).
      */
-    AV_STEREO3D_2D,
+            AV_STEREO3D_2D,
 
     /**
      * Views are next to each other.
@@ -64,7 +64,7 @@ enum AVStereo3DType {
      *    ...
      * @endcode
      */
-    AV_STEREO3D_SIDEBYSIDE,
+            AV_STEREO3D_SIDEBYSIDE,
 
     /**
      * Views are on top of each other.
@@ -76,7 +76,7 @@ enum AVStereo3DType {
      *    RRRRRRRR
      * @endcode
      */
-    AV_STEREO3D_TOPBOTTOM,
+            AV_STEREO3D_TOPBOTTOM,
 
     /**
      * Views are alternated temporally.
@@ -89,7 +89,7 @@ enum AVStereo3DType {
      *    ...      ...      ...
      * @endcode
      */
-    AV_STEREO3D_FRAMESEQUENCE,
+            AV_STEREO3D_FRAMESEQUENCE,
 
     /**
      * Views are packed in a checkerboard-like structure per pixel.
@@ -101,7 +101,7 @@ enum AVStereo3DType {
      *    ...
      * @endcode
      */
-    AV_STEREO3D_CHECKERBOARD,
+            AV_STEREO3D_CHECKERBOARD,
 
     /**
      * Views are next to each other, but when upscaling
@@ -114,7 +114,7 @@ enum AVStereo3DType {
      *     LLLLRRRR           L L L L  R R R R
      * @endcode
      */
-    AV_STEREO3D_SIDEBYSIDE_QUINCUNX,
+            AV_STEREO3D_SIDEBYSIDE_QUINCUNX,
 
     /**
      * Views are packed per line, as if interlaced.
@@ -126,7 +126,7 @@ enum AVStereo3DType {
      *    ...
      * @endcode
      */
-    AV_STEREO3D_LINES,
+            AV_STEREO3D_LINES,
 
     /**
      * Views are packed per column.
@@ -138,7 +138,7 @@ enum AVStereo3DType {
      *    ...
      * @endcode
      */
-    AV_STEREO3D_COLUMNS,
+            AV_STEREO3D_COLUMNS,
 };
 
 /**
@@ -148,17 +148,17 @@ enum AVStereo3DView {
     /**
      * Frame contains two packed views.
      */
-    AV_STEREO3D_VIEW_PACKED,
+            AV_STEREO3D_VIEW_PACKED,
 
     /**
      * Frame contains only the left view.
      */
-    AV_STEREO3D_VIEW_LEFT,
+            AV_STEREO3D_VIEW_LEFT,
 
     /**
      * Frame contains only the right view.
      */
-    AV_STEREO3D_VIEW_RIGHT,
+            AV_STEREO3D_VIEW_RIGHT,
 };
 
 /**

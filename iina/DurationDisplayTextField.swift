@@ -10,48 +10,48 @@ import Foundation
 
 class DurationDisplayTextField: NSTextField {
 
-  enum DisplayMode {
-    case current
-    case duration // displays the duration of the movie
-    case remaining // displays the remaining time in the movie
-  }
-
-  var mode: DisplayMode = .duration
-
-  /** Switches the display mode for the right label */
-  func switchMode() {
-    switch mode {
-    case .duration:
-      mode = .remaining
-    default:
-      mode = .duration
+    enum DisplayMode {
+        case current
+        case duration // displays the duration of the movie
+        case remaining // displays the remaining time in the movie
     }
-  }
 
+    var mode: DisplayMode = .duration
 
-  func updateText(with duration: VideoTime, given current: VideoTime) {
-
-    let stringValue: String
-    switch mode {
-    case .current:
-      stringValue = current.stringRepresentation
-    case .duration:
-      stringValue = duration.stringRepresentation
-    case .remaining:
-      var remaining = (duration - current)
-      if remaining.second < 0 {
-        remaining = VideoTime.zero
-      }
-      stringValue = "-\(remaining.stringRepresentation)"
+    /** Switches the display mode for the right label */
+    func switchMode() {
+        switch mode {
+        case .duration:
+            mode = .remaining
+        default:
+            mode = .duration
+        }
     }
-    self.stringValue = stringValue
-  }
 
-  override func mouseDown(with event: NSEvent) {
-    super.mouseDown(with: event)
 
-    self.switchMode()
-    Preference.set(mode == .remaining, for: .showRemainingTime)
-  }
+    func updateText(with duration: VideoTime, given current: VideoTime) {
+
+        let stringValue: String
+        switch mode {
+        case .current:
+            stringValue = current.stringRepresentation
+        case .duration:
+            stringValue = duration.stringRepresentation
+        case .remaining:
+            var remaining = (duration - current)
+            if remaining.second < 0 {
+                remaining = VideoTime.zero
+            }
+            stringValue = "-\(remaining.stringRepresentation)"
+        }
+        self.stringValue = stringValue
+    }
+
+    override func mouseDown(with event: NSEvent) {
+        super.mouseDown(with: event)
+
+        self.switchMode()
+        Preference.set(mode == .remaining, for: .showRemainingTime)
+    }
 
 }

@@ -32,6 +32,6 @@
  * @return Returns 0 on success, error code on failure.
  */
 int av_adts_header_parse(const uint8_t *buf, uint32_t *samples,
-                         uint8_t *frames);
+        uint8_t *frames);
 
 #endif /* AVCODEC_ADTS_PARSER_H */

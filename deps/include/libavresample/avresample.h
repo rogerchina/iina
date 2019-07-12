@@ -284,9 +284,9 @@ void avresample_free(AVAudioResampleContext **avr);
  */
 attribute_deprecated
 int avresample_build_matrix(uint64_t in_layout, uint64_t out_layout,
-                            double center_mix_level, double surround_mix_level,
-                            double lfe_mix_level, int normalize, double *matrix,
-                            int stride, enum AVMatrixEncoding matrix_encoding);
+        double center_mix_level, double surround_mix_level,
+        double lfe_mix_level, int normalize, double *matrix,
+        int stride, enum AVMatrixEncoding matrix_encoding);
 
 /**
  *
@@ -305,7 +305,7 @@ int avresample_build_matrix(uint64_t in_layout, uint64_t out_layout,
  */
 attribute_deprecated
 int avresample_get_matrix(AVAudioResampleContext *avr, double *matrix,
-                          int stride);
+        int stride);
 
 /**
  *
@@ -330,7 +330,7 @@ int avresample_get_matrix(AVAudioResampleContext *avr, double *matrix,
  */
 attribute_deprecated
 int avresample_set_matrix(AVAudioResampleContext *avr, const double *matrix,
-                          int stride);
+        int stride);
 
 /**
  *
@@ -364,7 +364,7 @@ int avresample_set_matrix(AVAudioResampleContext *avr, const double *matrix,
  */
 attribute_deprecated
 int avresample_set_channel_mapping(AVAudioResampleContext *avr,
-                                   const int *channel_map);
+        const int *channel_map);
 
 /**
  *
@@ -384,7 +384,7 @@ int avresample_set_channel_mapping(AVAudioResampleContext *avr,
  */
 attribute_deprecated
 int avresample_set_compensation(AVAudioResampleContext *avr, int sample_delta,
-                                int compensation_distance);
+        int compensation_distance);
 
 /**
  *
@@ -449,9 +449,9 @@ int avresample_get_out_samples(AVAudioResampleContext *avr, int in_nb_samples);
  */
 attribute_deprecated
 int avresample_convert(AVAudioResampleContext *avr, uint8_t **output,
-                       int out_plane_size, int out_samples,
-                       uint8_t * const *input, int in_plane_size,
-                       int in_samples);
+        int out_plane_size, int out_samples,
+        uint8_t *const *input, int in_plane_size,
+        int in_samples);
 
 /**
  *
@@ -565,7 +565,7 @@ int avresample_read(AVAudioResampleContext *avr, uint8_t **output, int nb_sample
  */
 attribute_deprecated
 int avresample_convert_frame(AVAudioResampleContext *avr,
-                             AVFrame *output, AVFrame *input);
+        AVFrame *output, AVFrame *input);
 
 /**
  *

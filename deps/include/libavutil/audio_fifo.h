@@ -64,7 +64,7 @@ void av_audio_fifo_free(AVAudioFifo *af);
  * @return            newly allocated AVAudioFifo, or NULL on error
  */
 AVAudioFifo *av_audio_fifo_alloc(enum AVSampleFormat sample_fmt, int channels,
-                                 int nb_samples);
+        int nb_samples);
 
 /**
  * Reallocate an AVAudioFifo.

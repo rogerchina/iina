@@ -137,11 +137,9 @@ size_t av_strlcatf(char *dst, size_t size, const char *fmt, ...) av_printf_forma
  * @param len maximum number of characters to check in the string, that
  *            is the maximum value which is returned by the function
  */
-static inline size_t av_strnlen(const char *s, size_t len)
-{
+static inline size_t av_strnlen(const char *s, size_t len) {
     size_t i;
-    for (i = 0; i < len && s[i]; i++)
-        ;
+    for (i = 0; i < len && s[i]; i++);
     return i;
 }
 
@@ -203,33 +201,29 @@ char *av_strtok(char *s, const char *delim, char **saveptr);
 /**
  * Locale-independent conversion of ASCII isdigit.
  */
-static inline av_const int av_isdigit(int c)
-{
+static inline av_const int av_isdigit(int c) {
     return c >= '0' && c <= '9';
 }
 
 /**
  * Locale-independent conversion of ASCII isgraph.
  */
-static inline av_const int av_isgraph(int c)
-{
+static inline av_const int av_isgraph(int c) {
     return c > 32 && c < 127;
 }
 
 /**
  * Locale-independent conversion of ASCII isspace.
  */
-static inline av_const int av_isspace(int c)
-{
+static inline av_const int av_isspace(int c) {
     return c == ' ' || c == '\f' || c == '\n' || c == '\r' || c == '\t' ||
-           c == '\v';
+            c == '\v';
 }
 
 /**
  * Locale-independent conversion of ASCII characters to uppercase.
  */
-static inline av_const int av_toupper(int c)
-{
+static inline av_const int av_toupper(int c) {
     if (c >= 'a' && c <= 'z')
         c ^= 0x20;
     return c;
@@ -238,8 +232,7 @@ static inline av_const int av_toupper(int c)
 /**
  * Locale-independent conversion of ASCII characters to lowercase.
  */
-static inline av_const int av_tolower(int c)
-{
+static inline av_const int av_tolower(int c) {
     if (c >= 'A' && c <= 'Z')
         c ^= 0x20;
     return c;
@@ -248,8 +241,7 @@ static inline av_const int av_tolower(int c)
 /**
  * Locale-independent conversion of ASCII isxdigit.
  */
-static inline av_const int av_isxdigit(int c)
-{
+static inline av_const int av_isxdigit(int c) {
     c = av_tolower(c);
     return av_isdigit(c) || (c >= 'a' && c <= 'f');
 }
@@ -351,7 +343,7 @@ enum AVEscapeMode {
  */
 av_warn_unused_result
 int av_escape(char **dst, const char *src, const char *special_chars,
-              enum AVEscapeMode mode, int flags);
+        enum AVEscapeMode mode, int flags);
 
 #define AV_UTF8_FLAG_ACCEPT_INVALID_BIG_CODES          1 ///< accept codepoints over 0x10FFFF
 #define AV_UTF8_FLAG_ACCEPT_NON_CHARACTERS             2 ///< accept non-characters - 0xFFFE and 0xFFFF
@@ -391,7 +383,7 @@ int av_escape(char **dst, const char *src, const char *special_chars,
  */
 av_warn_unused_result
 int av_utf8_decode(int32_t *codep, const uint8_t **bufp, const uint8_t *buf_end,
-                   unsigned int flags);
+        unsigned int flags);
 
 /**
  * Check if a name is in a list.

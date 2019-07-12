@@ -10,8 +10,8 @@ import Cocoa
 
 class SlideUpButton: NSButton {
 
-  override func resetCursorRects() {
-    addCursorRect(self.bounds, cursor: .pointingHand)
-  }
+    override func resetCursorRects() {
+        addCursorRect(self.bounds, cursor: .pointingHand)
+    }
 
 }

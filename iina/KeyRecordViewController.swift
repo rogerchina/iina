@@ -10,116 +10,118 @@ import Cocoa
 
 class KeyRecordViewController: NSViewController, KeyRecordViewDelegate, NSRuleEditorDelegate {
 
-  @IBOutlet weak var keyRecordView: KeyRecordView!
-  @IBOutlet weak var keyLabel: NSTextField!
-  @IBOutlet weak var actionTextField: NSTextField!
-  @IBOutlet weak var ruleEditor: NSRuleEditor!
+    @IBOutlet weak var keyRecordView: KeyRecordView!
+    @IBOutlet weak var keyLabel: NSTextField!
+    @IBOutlet weak var actionTextField: NSTextField!
+    @IBOutlet weak var ruleEditor: NSRuleEditor!
 
-  private lazy var criterions: [Criterion] = KeyBindingDataLoader.load()
+    private lazy var criterions: [Criterion] = KeyBindingDataLoader.load()
 
-  private var pendingKey: String?
-  private var pendingAction: String?
+    private var pendingKey: String?
+    private var pendingAction: String?
 
-  var keyCode: String {
-    get {
-      return keyLabel.stringValue
-    }
-    set {
-      if let f = keyLabel {
-        f.stringValue = newValue
-      } else {
-        pendingKey = newValue
-      }
-    }
-  }
-
-  var action: String {
-    get {
-      return actionTextField.stringValue
-    }
-    set {
-      if let f = actionTextField {
-        f.stringValue = newValue
-      } else {
-        pendingAction = newValue
-      }
-    }
-  }
-
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    keyRecordView.delegate = self
-
-    ruleEditor.nestingMode = .single
-    ruleEditor.canRemoveAllRows = false
-    ruleEditor.delegate = self
-    ruleEditor.addRow(self)
-
-    if let pk = pendingKey {
-      keyLabel.stringValue = pk
-      pendingKey = nil
-    }
-    if let pa = pendingAction {
-      actionTextField.stringValue = pa
-      pendingAction = nil
+    var keyCode: String {
+        get {
+            return keyLabel.stringValue
+        }
+        set {
+            if let f = keyLabel {
+                f.stringValue = newValue
+            } else {
+                pendingKey = newValue
+            }
+        }
     }
 
-    NotificationCenter.default.addObserver(forName: .iinaKeyBindingInputChanged, object: nil, queue: .main) { _ in
-      self.updateCommandField()
+    var action: String {
+        get {
+            return actionTextField.stringValue
+        }
+        set {
+            if let f = actionTextField {
+                f.stringValue = newValue
+            } else {
+                pendingAction = newValue
+            }
+        }
     }
-  }
 
-  func keyRecordView(_ view: KeyRecordView, recordedKeyDownWith event: NSEvent) {
-    keyLabel.stringValue = KeyCodeHelper.mpvKeyCode(from: event)
-  }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        keyRecordView.delegate = self
 
-  // MARK: - NSRuleEditorDelegate
+        ruleEditor.nestingMode = .single
+        ruleEditor.canRemoveAllRows = false
+        ruleEditor.delegate = self
+        ruleEditor.addRow(self)
 
-  func ruleEditor(_ editor: NSRuleEditor, child index: Int, forCriterion criterion: Any?, with rowType: NSRuleEditor.RowType) -> Any {
-    if criterion == nil {
-      return criterions[index]
-    } else {
-      return (criterion as! Criterion).child(at: index)
+        if let pk = pendingKey {
+            keyLabel.stringValue = pk
+            pendingKey = nil
+        }
+        if let pa = pendingAction {
+            actionTextField.stringValue = pa
+            pendingAction = nil
+        }
+
+        NotificationCenter.default.addObserver(forName: .iinaKeyBindingInputChanged, object: nil, queue: .main) { _ in
+            self.updateCommandField()
+        }
     }
-  }
 
-  func ruleEditor(_ editor: NSRuleEditor, numberOfChildrenForCriterion criterion: Any?, with rowType: NSRuleEditor.RowType) -> Int {
-    if criterion == nil {
-      return criterions.count
-    } else {
-      return (criterion as! Criterion).childrenCount()
+    func keyRecordView(_ view: KeyRecordView, recordedKeyDownWith event: NSEvent) {
+        keyLabel.stringValue = KeyCodeHelper.mpvKeyCode(from: event)
     }
-  }
 
-  func ruleEditor(_ editor: NSRuleEditor, displayValueForCriterion criterion: Any, inRow row: Int) -> Any {
-    return (criterion as! Criterion).displayValue()
-  }
+    // MARK: - NSRuleEditorDelegate
 
-  func ruleEditorRowsDidChange(_ notification: Notification) {
-    updateCommandField()
-  }
-
-  // MARK: IBAction
-
-  @IBAction func ChooseMediaKeyAction(_ sender: NSPopUpButton) {
-    switch sender.selectedTag() {
-    case 0:
-      keyLabel.stringValue = "PLAY"
-    case 1:
-      keyLabel.stringValue = "PREV"
-    case 2:
-      keyLabel.stringValue = "NEXT"
-    default:
-      break
+    func ruleEditor(_ editor: NSRuleEditor, child index: Int, forCriterion criterion: Any?, with rowType: NSRuleEditor.RowType) -> Any {
+        if criterion == nil {
+            return criterions[index]
+        } else {
+            return (criterion as! Criterion).child(at: index)
+        }
     }
-  }
 
-  // MARK: - Other
+    func ruleEditor(_ editor: NSRuleEditor, numberOfChildrenForCriterion criterion: Any?, with rowType: NSRuleEditor.RowType) -> Int {
+        if criterion == nil {
+            return criterions.count
+        } else {
+            return (criterion as! Criterion).childrenCount()
+        }
+    }
 
-  private func updateCommandField() {
-    guard let criterions = ruleEditor.criteria(forRow: 0) as? [Criterion] else { return }
-    actionTextField.stringValue = KeyBindingTranslator.string(fromCriteria: criterions)
-  }
+    func ruleEditor(_ editor: NSRuleEditor, displayValueForCriterion criterion: Any, inRow row: Int) -> Any {
+        return (criterion as! Criterion).displayValue()
+    }
+
+    func ruleEditorRowsDidChange(_ notification: Notification) {
+        updateCommandField()
+    }
+
+    // MARK: IBAction
+
+    @IBAction func ChooseMediaKeyAction(_ sender: NSPopUpButton) {
+        switch sender.selectedTag() {
+        case 0:
+            keyLabel.stringValue = "PLAY"
+        case 1:
+            keyLabel.stringValue = "PREV"
+        case 2:
+            keyLabel.stringValue = "NEXT"
+        default:
+            break
+        }
+    }
+
+    // MARK: - Other
+
+    private func updateCommandField() {
+        guard let criterions = ruleEditor.criteria(forRow: 0) as? [Criterion] else {
+            return
+        }
+        actionTextField.stringValue = KeyBindingTranslator.string(fromCriteria: criterions)
+    }
 
 }
 

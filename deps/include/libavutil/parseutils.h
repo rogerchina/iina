@@ -47,7 +47,7 @@
  * @return >= 0 on success, a negative error code otherwise
  */
 int av_parse_ratio(AVRational *q, const char *str, int max,
-                   int log_offset, void *log_ctx);
+        int log_offset, void *log_ctx);
 
 #define av_parse_ratio_quiet(rate, str, max) \
     av_parse_ratio(rate, str, max, AV_LOG_MAX_OFFSET, NULL)
@@ -96,7 +96,7 @@ int av_parse_video_rate(AVRational *rate, const char *str);
  * failure (for example if color_string cannot be parsed).
  */
 int av_parse_color(uint8_t *rgba_color, const char *color_string, int slen,
-                   void *log_ctx);
+        void *log_ctx);
 
 /**
  * Get the name of a color from the internal table of hard-coded named

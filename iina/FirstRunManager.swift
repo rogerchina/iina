@@ -10,23 +10,23 @@ import Foundation
 
 class FirstRunManager {
 
-  struct Key: RawRepresentable {
+    struct Key: RawRepresentable {
 
-    typealias RawValue = String
-    var rawValue: String
+        typealias RawValue = String
+        var rawValue: String
 
-    static let joinBetaChannel = Key(rawValue: "joinBetaChannel")
-  }
-
-  static func isFirstRun(for key: Key) -> Bool {
-    let filename = ".\(key.rawValue)"
-    let fileURL = Utility.appSupportDirUrl.appendingPathComponent(filename, isDirectory: false)
-    let exists = FileManager.default.fileExists(atPath: fileURL.path)
-    if exists {
-      return false
-    } else {
-      FileManager.default.createFile(atPath: fileURL.path, contents: nil, attributes: nil)
-      return true
+        static let joinBetaChannel = Key(rawValue: "joinBetaChannel")
     }
-  }
+
+    static func isFirstRun(for key: Key) -> Bool {
+        let filename = ".\(key.rawValue)"
+        let fileURL = Utility.appSupportDirUrl.appendingPathComponent(filename, isDirectory: false)
+        let exists = FileManager.default.fileExists(atPath: fileURL.path)
+        if exists {
+            return false
+        } else {
+            FileManager.default.createFile(atPath: fileURL.path, contents: nil, attributes: nil)
+            return true
+        }
+    }
 }

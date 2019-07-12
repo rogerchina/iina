@@ -28,7 +28,7 @@ typedef enum AVThreadMessageFlags {
      * If this flag is set, send and recv operations are non-blocking and
      * return AVERROR(EAGAIN) immediately if they can not proceed.
      */
-    AV_THREAD_MESSAGE_NONBLOCK = 1,
+            AV_THREAD_MESSAGE_NONBLOCK = 1,
 
 } AVThreadMessageFlags;
 
@@ -42,8 +42,8 @@ typedef enum AVThreadMessageFlags {
  *          lavu was built without thread support
  */
 int av_thread_message_queue_alloc(AVThreadMessageQueue **mq,
-                                  unsigned nelem,
-                                  unsigned elsize);
+        unsigned nelem,
+        unsigned elsize);
 
 /**
  * Free a message queue.
@@ -56,15 +56,15 @@ void av_thread_message_queue_free(AVThreadMessageQueue **mq);
  * Send a message on the queue.
  */
 int av_thread_message_queue_send(AVThreadMessageQueue *mq,
-                                 void *msg,
-                                 unsigned flags);
+        void *msg,
+        unsigned flags);
 
 /**
  * Receive a message from the queue.
  */
 int av_thread_message_queue_recv(AVThreadMessageQueue *mq,
-                                 void *msg,
-                                 unsigned flags);
+        void *msg,
+        unsigned flags);
 
 /**
  * Set the sending error code.
@@ -75,7 +75,7 @@ int av_thread_message_queue_recv(AVThreadMessageQueue *mq,
  * suspend its operation.
  */
 void av_thread_message_queue_set_err_send(AVThreadMessageQueue *mq,
-                                          int err);
+        int err);
 
 /**
  * Set the receiving error code.
@@ -86,14 +86,14 @@ void av_thread_message_queue_set_err_send(AVThreadMessageQueue *mq,
  * to cause the receiving thread to stop or suspend its operation.
  */
 void av_thread_message_queue_set_err_recv(AVThreadMessageQueue *mq,
-                                          int err);
+        int err);
 
 /**
  * Set the optional free message callback function which will be called if an
  * operation is removing messages from the queue.
  */
 void av_thread_message_queue_set_free_func(AVThreadMessageQueue *mq,
-                                           void (*free_func)(void *msg));
+        void (*free_func)(void *msg));
 
 /**
  * Return the current number of messages in the queue.

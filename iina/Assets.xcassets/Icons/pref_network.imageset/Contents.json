@@ -1,16 +1,16 @@
 {
-  "images" : [
+  "images": [
     {
-      "idiom" : "universal",
-      "filename" : "pref_network.pdf"
+      "idiom": "universal",
+      "filename": "pref_network.pdf"
     }
   ],
-  "info" : {
-    "version" : 1,
-    "author" : "xcode"
+  "info": {
+    "version": 1,
+    "author": "xcode"
   },
-  "properties" : {
-    "template-rendering-intent" : "template",
-    "preserves-vector-representation" : true
+  "properties": {
+    "template-rendering-intent": "template",
+    "preserves-vector-representation": true
   }
 }

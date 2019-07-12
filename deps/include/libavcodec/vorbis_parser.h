@@ -34,7 +34,7 @@ typedef struct AVVorbisParseContext AVVorbisParseContext;
  * Allocate and initialize the Vorbis parser using headers in the extradata.
  */
 AVVorbisParseContext *av_vorbis_parse_init(const uint8_t *extradata,
-                                           int extradata_size);
+        int extradata_size);
 
 /**
  * Free the parser and everything associated with it.
@@ -57,7 +57,7 @@ void av_vorbis_parse_free(AVVorbisParseContext **s);
  * @param flags    flags for special frames
  */
 int av_vorbis_parse_frame_flags(AVVorbisParseContext *s, const uint8_t *buf,
-                                int buf_size, int *flags);
+        int buf_size, int *flags);
 
 /**
  * Get the duration for a Vorbis packet.
@@ -67,7 +67,7 @@ int av_vorbis_parse_frame_flags(AVVorbisParseContext *s, const uint8_t *buf,
  * @param buf_size size of the buffer
  */
 int av_vorbis_parse_frame(AVVorbisParseContext *s, const uint8_t *buf,
-                          int buf_size);
+        int buf_size);
 
 void av_vorbis_parse_reset(AVVorbisParseContext *s);
 
